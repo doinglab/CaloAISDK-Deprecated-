@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">FoodLens2TestApp</string>
+
+    <string name="foodlens_apptoken" translatable="false">FILL_APP_TOKEN</string>
+    <string name="foodlens_companytoken" translatable="false">FILL_COMPANY_TOKEN</string>
+
+    <string name="food_position">Food Position</string>
+    <string name="carbohydrate">Carbohydrate</string>
+    <string name="protein">Protein</string>
+    <string name="fat">Fat</string>
+</resources>
