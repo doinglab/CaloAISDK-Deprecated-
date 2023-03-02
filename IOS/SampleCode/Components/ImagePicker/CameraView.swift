@@ -39,7 +39,7 @@ struct CameraView: UIViewControllerRepresentable {
         }
         
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-            guard let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
+            guard let selectedImage = info[UIImagePickerController.InfoKey.originalImage.rawValue] as? UIImage else { return }
             self.picker.selectedImage = selectedImage
             self.picker.isPresented.wrappedValue.dismiss()
         }

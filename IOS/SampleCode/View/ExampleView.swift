@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-//import FoodLens
+import FoodLens2
 import Combine
 
 struct ExampleView: View {

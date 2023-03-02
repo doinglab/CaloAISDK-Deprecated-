@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import iOS_FoodlensSDK_2_0
+import FoodLens2
 import Combine
 
 class ViewModel: ObservableObject {

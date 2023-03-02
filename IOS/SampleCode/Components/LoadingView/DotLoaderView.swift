@@ -11,7 +11,7 @@ import Combine
 struct DotLoaderView: View {
     let timer: Publishers.Autoconnect<Timer.TimerPublisher>
     let timing: Double
-    
+
     let maxCounter = 4
     @State var counter = 0
     
@@ -20,7 +20,7 @@ struct DotLoaderView: View {
 
     public init(color: Color = .blue, size: CGFloat = 50, speed: Double = 0.5) {
         timing = speed / 2
-        timer = Timer.publish(every: timing, on: .main, in: .defaultRunLoopMode).autoconnect()
+        timer = Timer.publish(every: timing, on: .main, in: RunLoop.Mode.default).autoconnect()
         frame = CGSize(width: size, height: size)
         primaryColor = color
     }

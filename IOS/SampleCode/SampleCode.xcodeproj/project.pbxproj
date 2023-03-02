@@ -22,6 +22,7 @@
 		25400A0729B0189000D53681 /* ExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254009FB29B0189000D53681 /* ExampleView.swift */; };
 		25400A0829B0189000D53681 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254009FD29B0189000D53681 /* ViewModel.swift */; };
 		25400A1429B01F3F00D53681 /* FoodLens2 in Frameworks */ = {isa = PBXBuildFile; productRef = 25400A1329B01F3F00D53681 /* FoodLens2 */; };
+		25AA4DB629B03F1F00876594 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 25AA4DB829B03F1F00876594 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,8 @@
 		254009F929B0189000D53681 /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		254009FB29B0189000D53681 /* ExampleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleView.swift; sourceTree = "<group>"; };
 		254009FD29B0189000D53681 /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		25AA4DB729B03F1F00876594 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		25AA4DBA29B03F6500876594 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +82,7 @@
 				254009FA29B0189000D53681 /* View */,
 				254009FC29B0189000D53681 /* ViewModel */,
 				254009E529B0184800D53681 /* Preview Content */,
+				25AA4DB829B03F1F00876594 /* Localizable.strings */,
 			);
 			path = SampleCode;
 			sourceTree = "<group>";
@@ -192,6 +196,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ko,
 			);
 			mainGroup = 254009D329B0184700D53681;
 			packageReferences = (
@@ -212,6 +217,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				254009E729B0184800D53681 /* Preview Assets.xcassets in Resources */,
+				25AA4DB629B03F1F00876594 /* Localizable.strings in Resources */,
 				254009E429B0184800D53681 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -240,11 +246,24 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		25AA4DB829B03F1F00876594 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				25AA4DB729B03F1F00876594 /* en */,
+				25AA4DBA29B03F6500876594 /* ko */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		254009E829B0184800D53681 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -305,6 +324,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -377,7 +397,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = doinglab.DietDiaryAI.SampleCode;
+				PRODUCT_BUNDLE_IDENTIFIER = com.doinglab.foodlens2.example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -407,7 +427,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = doinglab.DietDiaryAI.SampleCode;
+				PRODUCT_BUNDLE_IDENTIFIER = com.doinglab.foodlens2.example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

@@ -6,7 +6,7 @@
 //
 
 import UIKit
-//import FoodLens2
+import FoodLens2
 
 extension UIImage {
     func cropToBox(_ box: Box) -> UIImage {

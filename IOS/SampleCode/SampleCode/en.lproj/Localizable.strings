@@ -5,3 +5,7 @@
   Created by 박병호 on 2023/03/02.
   
 */
+
+"Carbohydrate" = "Carb";
+"Protein" = "Protein";
+"Fat" = "Fat";
