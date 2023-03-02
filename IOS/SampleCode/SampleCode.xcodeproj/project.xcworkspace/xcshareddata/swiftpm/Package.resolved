@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "ios_foodlens2sdk",
+      "kind" : "remoteSourceControl",
+      "location" : "https://bitbucket.org/doing-lab/ios_foodlens2sdk",
+      "state" : {
+        "branch" : "main",
+        "revision" : "fb68a381da66aaa88f6e2515fa0f71d600f3beaa"
+      }
+    }
+  ],
+  "version" : 2
+}
