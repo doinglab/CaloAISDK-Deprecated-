@@ -1,18 +1,36 @@
 {
-  "foodInfoList": [
-    {
-      "name": String, // 음식 이름
-      "fullName": String, // 1회 제공량 대비 섭취한 음식의 양
-      "ingredientName": [ String ] // 재료 이름
-      "foodPositionList": {
-        "xmax": Int,
-        "xmin": Int,
-        "ymax": Int,
-        "ymin": Int
-      },
-      "gram": Double, // 총 음식 양
-      "energy": Double, // 에너지(칼로리)(-1은 null 처리)
-      
-    }
-  ]  
+    "foodInfoList": [
+        {
+            "name": String, //음식이름(매칭 음식이 없을 경우 empty)
+            "fullName": String, //음식전체이름(음식이름+재료이름, 매칭 음식이 없을 경우 empty),
+            "ingredientName": [ //재료 이름 
+                String
+            ],
+            "foodPosition": { //음식이 위치하는 좌표
+                "xmin": Int 
+                "xmax": Int,
+                "ymin": Int,
+                "ymax": Int
+            },
+            "gram": Double, //총 음식 양
+            "energy": Double, //총 에너지(칼로리)(-1은 null 처리)
+            "carbohydrate": Double, //총 탄수화물 (-1은 null 처리)
+            "protein": Double, //총 단백질 (-1은 null 처리)
+            "fat": Double, //총 지방 (-1은 null 처리)
+            "totalSugars": Double, //총 당류 (-1은 null 처리)
+            "totalDietaryFiber": Double //총 식이섬유 (-1은 null 처리),
+            "saturatedFattyAcid": Double, //총 포화 지방산 (-1은 null 처리)
+            "cholesterol": Double, //총 콜레스테롤 (-1은 null 처리)
+            "transFattyAcid": Double, //총 트랜스 지방산 (-1은 null 처리)
+            "vitaminD": Double, //총 비타민 D (-1은 null 처리)
+            "sodium": Double, //총 나트륨 (-1은 null 처리)
+            "calcium": Double, //총 칼슘 (-1은 null 처리)
+            "iron": Double, //총 철 (-1은 null 처리)
+            "potassium": Double, //총 칼륨 (-1은 null 처리)
+            "proteinGrains": Double, //단백질 류 그룹 (곡물)
+            "proteinVegetable": Double, //단백질 류 그룹 (채소)
+            "energyFruit": Double, //에너지(칼로리) 류 그룹 (과일)
+            "energyVegetable": Double, //에너지(칼로리) 류 그룹 (채소)
+        }     
+    ]
 }

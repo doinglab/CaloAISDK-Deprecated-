@@ -1,36 +1,38 @@
 {
-  "foodInfoList": [
-    {
-      "name": "string",
-      "fullName": "string",
-      "ingredientName": [
-        "string"
-      ],
-      "foodPositionList": {
-        "xmin": 0,
-        "xmax": 0,
-        "ymin": 0,
-        "ymax": 0
-      },
-      "gram": 0,
-      "energy": 0,
-      "carbohydrate": 0,
-      "protein": 0,
-      "fat": 0,
-      "totalSugars": 0,
-      "totalDietaryFiber": 0,
-      "saturatedFattyAcid": 0,
-      "cholesterol": 0,
-      "transFattyAcid": 0,
-      "vitaminD": 0,
-      "sodium": 0,
-      "calcium": 0,
-      "iron": 0,
-      "potassium": 0,
-      "proteinGrains": 0,
-      "proteinVegetable": 0,
-      "energyFruit": 0,
-      "energyVegetable": 0
-    }
-  ]
+    "foodInfoList": [
+        {
+            "name": "Instant ramyeon",
+            "fullName": "Instant ramyeon (Instant noodles, Eggs, Green onion)",
+            "ingredientName": [
+                "Instant noodles",
+                "Eggs", 
+                "Green onion"
+            ],
+            "foodPosition": {
+                "xmin": 10,
+                "xmax": 301,
+                "ymin": 11,
+                "ymax": 280
+            },
+            "gram": 680.99,
+            "energy": 563.12,
+            "carbohydrate": 80.6,
+            "protein": 21.28,
+            "fat": 15.65,
+            "totalSugars": 0.21,
+            "totalDietaryFiber": 9.17,
+            "saturatedFattyAcid": 6.33,
+            "cholesterol": 230.86,
+            "transFattyAcid": 0.09,
+            "vitaminD": 14.67,
+            "sodium": 5295.06,
+            "calcium": 272.01,
+            "iron": 2.87,
+            "potassium": 322.04,
+            "proteinGrains": 0.04,
+            "proteinVegetable": 8.44,
+            "energyFruit": 0.0,
+            "energyVegetable": 0.54
+        }     
+    ]
 }
