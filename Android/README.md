@@ -113,8 +113,16 @@ foodLensService.setAutoRotate(false)
 foodLensService.setLanguage(ConfigLocale.ENGLISH)
 ```
 
-## 5. SDK 사용 예제 
+## 5. SDK 상세 스펙  
+[상세 API 명세](https://doinglab.github.io/foodlens2sdk/android/index.html)  
+
+## 6. SDK 사용 예제 
 [Sample 예제](SampleCode/)
 
-## 6. License
+## 7. JSON Format
+[JSON Format](../JSON%20Format)
+
+[JSON Sample](../JSON%20Sample)
+
+## 8. License
 FoodLens is available under the MIT license. See the LICENSE file for more info.
