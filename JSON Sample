@@ -1,0 +1,36 @@
+{
+  "foodInfoList": [
+    {
+      "name": "string",
+      "fullName": "string",
+      "ingredientName": [
+        "string"
+      ],
+      "foodPositionList": {
+        "xmin": 0,
+        "xmax": 0,
+        "ymin": 0,
+        "ymax": 0
+      },
+      "gram": 0,
+      "energy": 0,
+      "carbohydrate": 0,
+      "protein": 0,
+      "fat": 0,
+      "totalSugars": 0,
+      "totalDietaryFiber": 0,
+      "saturatedFattyAcid": 0,
+      "cholesterol": 0,
+      "transFattyAcid": 0,
+      "vitaminD": 0,
+      "sodium": 0,
+      "calcium": 0,
+      "iron": 0,
+      "potassium": 0,
+      "proteinGrains": 0,
+      "proteinVegetable": 0,
+      "energyFruit": 0,
+      "energyVegetable": 0
+    }
+  ]
+}

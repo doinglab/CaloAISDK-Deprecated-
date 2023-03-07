@@ -1,0 +1,18 @@
+{
+  "foodInfoList": [
+    {
+      "name": String, // 음식 이름
+      "fullName": String, // 1회 제공량 대비 섭취한 음식의 양
+      "ingredientName": [ String ] // 재료 이름
+      "foodPositionList": {
+        "xmax": Int,
+        "xmin": Int,
+        "ymax": Int,
+        "ymin": Int
+      },
+      "gram": Double, // 총 음식 양
+      "energy": Double, // 에너지(칼로리)(-1은 null 처리)
+      
+    }
+  ]  
+}
