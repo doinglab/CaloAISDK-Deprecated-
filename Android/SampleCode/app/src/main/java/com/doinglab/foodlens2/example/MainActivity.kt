@@ -23,9 +23,10 @@ import com.doinglab.foodlens2.example.databinding.ActivityMainBinding
 import com.doinglab.foodlens2.example.listview.ListItem
 import com.doinglab.foodlens2.example.listview.SampleListAdapter
 import com.doinglab.foodlens2.example.util.Utils
-import com.doinglab.foodlens2.sdk.ConfigLocale
+
 import com.doinglab.foodlens2.sdk.FoodLens
 import com.doinglab.foodlens2.sdk.RecognitionResultHandler
+import com.doinglab.foodlens2.sdk.config.FoodLensLocaleConfig
 import com.doinglab.foodlens2.sdk.errors.BaseError
 import com.doinglab.foodlens2.sdk.model.RecognitionResult
 import java.io.File
@@ -57,7 +58,8 @@ class MainActivity : AppCompatActivity() {
         binding.list.adapter = listAdapter
 
         foodLensService.setAutoRotate(true)
-        foodLensService.setLanguage(ConfigLocale.KOREA)
+        //foodLensService.setLanguage(ConfigLocale.KOREA)
+        foodLensService.setLanguage(FoodLensLocaleConfig.KOREA)
 
         loadingDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         loadingDialog.setContentView(ProgressBar(this))
@@ -167,10 +169,10 @@ class MainActivity : AppCompatActivity() {
         resultData.foodInfoList?.forEach { foodInfo ->
 
             foodInfo?.let {
-                val xMin = it.foodPositionList?.xmin ?: 0
-                val yMin = it.foodPositionList?.ymin ?: 0
-                val xMax = it.foodPositionList?.xmax ?: originBitmap?.width ?: 0
-                val yMax = it.foodPositionList?.ymax ?: originBitmap?.height ?: 0
+                val xMin = it.foodPosition?.xmin ?: 0
+                val yMin = it.foodPosition?.ymin ?: 0
+                val xMax = it.foodPosition?.xmax ?: originBitmap?.width ?: 0
+                val yMax = it.foodPosition?.ymax ?: originBitmap?.height ?: 0
 
                 val bitmap = Utils.cropBitmap(originBitmap, xMin, yMin, xMax,yMax) ?: null
 
