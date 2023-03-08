@@ -23,7 +23,7 @@ android {
 ```java
    defaultConfig {
         ....
-        minSdkVersion 21
+        minSdkVersion 23
 	....       
     }
 ```
