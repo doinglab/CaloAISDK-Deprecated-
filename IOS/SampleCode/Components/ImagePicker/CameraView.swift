@@ -37,18 +37,11 @@ struct CameraView: UIViewControllerRepresentable {
         init(picker: CameraView) {
             self.picker = picker
         }
-        
-        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-            guard let selectedImage = info[UIImagePickerController.InfoKey.originalImage.rawValue] as? UIImage else { return }
+
+        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+            guard let selectedImage = info[UIImagePickerController.InfoKey(rawValue: UIImagePickerController.InfoKey.originalImage.rawValue)] as? UIImage else { return }
             self.picker.selectedImage = selectedImage
             self.picker.isPresented.wrappedValue.dismiss()
         }
-        
-        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-//            guard let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
-//            self.picker.selectedImage = selectedImage
-//            self.picker.isPresented.wrappedValue.dismiss()
-        }
-        
     }
 }
