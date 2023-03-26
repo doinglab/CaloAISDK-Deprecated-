@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://bitbucket.org/doing-lab/ios_foodlens2sdk",
       "state" : {
-        "branch" : "main",
-        "revision" : "1b519780ce9f25a2ec289ff3d130fca5069533dd"
+        "revision" : "daf7a793c5dbd6050662bebd0cedd5fb10cc1f19",
+        "version" : "0.2.1"
       }
     }
   ],

@@ -18,14 +18,13 @@ class ViewModel: ObservableObject {
     @Published var isShowingDetailView: Bool = false
     @Published var isLoading: Bool = false
     
+    let foodlens: FoodLens = .init()
+    
     private var cancellable: Set<AnyCancellable> = .init()
 
     init() {
-        FoodLens.createFoodLensService(companyToken: "<Company Token>",
-                                       appToken: "<App Token>")
-        
-        FoodLens.setLanguage(.current)
-        FoodLens.setAutoRotate(true)
+        foodlens.setLanguage(.ko)
+        foodlens.setAutoRotate(true)
         setupImageBinding()
     }
     
@@ -63,7 +62,7 @@ class ViewModel: ObservableObject {
         
         self.startLoading()
         Task {
-            let result = await FoodLens.shared.predict(image: image)
+            let result = await foodlens.predict(image: image)
             switch result {
             case .success(let response):
                 self.stopLoading()
@@ -83,7 +82,7 @@ class ViewModel: ObservableObject {
         }
         
         self.startLoading()
-        FoodLens.shared.predictPublisher(image: image)
+        foodlens.predictPublisher(image: image)
             .sink(receiveCompletion: { output in
                 switch output {
                 case .finished:
@@ -107,7 +106,7 @@ class ViewModel: ObservableObject {
         }
         
         self.startLoading()
-        FoodLens.shared.predict(image: image) { result in
+        foodlens.predict(image: image) { result in
             switch result {
             case .success(let response):
                 self.stopLoading()

@@ -67,10 +67,10 @@ private struct PredictResultView: View {
 private struct PredictResultElementView: View {
     var image: UIImage
     var foodInfo: FoodInfo
-        
+
     var body: some View {
         HStack(spacing: 8.0) {
-            if let box = foodInfo.foodPositionList {
+            if let box = foodInfo.foodPosition {
                 Image(uiImage: image.cropToBox(box))
                     .resizable()
                     .scaledToFit()
