@@ -15,46 +15,22 @@ class ViewModel: ObservableObject {
     
     @Published var isShowPhotoPicker: Bool = false
     @Published var isShowCarmera: Bool = false
-    @Published var isShowingDetailView: Bool = false
     @Published var isLoading: Bool = false
+    
+    @Published var selectedLanguage: LanguageConfig = .en
+    @Published var isAutoRotate: Bool = true
     
     let foodlens: FoodLens = .init()
     
     private var cancellable: Set<AnyCancellable> = .init()
 
     init() {
-        foodlens.setLanguage(.ko)
-        foodlens.setAutoRotate(true)
         setupImageBinding()
+        setLanguage()
+        setAutoRotate()
     }
     
-    private var selectedImagePublisher: AnyPublisher<UIImage, Never> {
-        self.$selectedImage
-            .dropFirst()
-            .eraseToAnyPublisher()
-    }
-    
-    private func setupImageBinding() {
-        self.selectedImagePublisher
-            .sink { image in
-                self.predictResponses.foodInfoList.removeAll()
-                self.asyncPredict(image)
-            }
-            .store(in: &self.cancellable)
-    }
-    
-    private func startLoading() {
-        DispatchQueue.main.async {
-            self.isLoading = true
-        }
-    }
-    
-    private func stopLoading() {
-        DispatchQueue.main.async {
-            self.isLoading = false
-        }
-    }
-    
+    // MARK: - Predict Method
     func asyncPredict(_ image: UIImage?) {
         guard let image = image else {
             return
@@ -117,6 +93,64 @@ class ViewModel: ObservableObject {
                 self.stopLoading()
                 print(error.localizedDescription)
             }
+        }
+    }
+    
+    // MARK: - Publisher
+    private var selectedImagePublisher: AnyPublisher<UIImage, Never> {
+        self.$selectedImage
+            .dropFirst()
+            .eraseToAnyPublisher()
+    }
+    
+    private func setupImageBinding() {
+        self.selectedImagePublisher
+            .sink { image in
+                self.predictResponses.foodInfoList.removeAll()
+                self.asyncPredict(image)
+            }
+            .store(in: &self.cancellable)
+    }
+    
+    private var selectedLanguagePublisher: AnyPublisher<LanguageConfig, Never> {
+        self.$selectedLanguage
+            .dropFirst()
+            .removeDuplicates()
+            .eraseToAnyPublisher()
+    }
+    
+    private func setLanguage() {
+        self.selectedLanguagePublisher
+            .sink { language in
+                self.foodlens.setLanguage(language)
+            }
+            .store(in: &self.cancellable)
+    }
+    
+    private var isAutoRotatePublisher: AnyPublisher<Bool, Never> {
+        self.$isAutoRotate
+            .dropFirst()
+            .removeDuplicates()
+            .eraseToAnyPublisher()
+    }
+    
+    private func setAutoRotate() {
+        self.isAutoRotatePublisher
+            .sink { isAutoRotate in
+                self.foodlens.setAutoRotate(isAutoRotate)
+            }
+            .store(in: &self.cancellable)
+    }
+    
+    private func startLoading() {
+        DispatchQueue.main.async {
+            self.isLoading = true
+        }
+    }
+    
+    private func stopLoading() {
+        DispatchQueue.main.async {
+            self.isLoading = false
         }
     }
 }

@@ -20,6 +20,8 @@ struct ExampleView: View {
                 
                 ImageSelectButtons(viewModel: self.viewModel)
                 
+                ConfigSettingView(viewModel: self.viewModel)
+                
                 PredictResultView(viewModel: self.viewModel)
             }
             .padding(.horizontal, 20)
@@ -49,6 +51,41 @@ private struct ImageSelectButtons: View {
                     viewModel.isShowPhotoPicker = true
                 }
                 .buttonStyle(TitleButton())
+            }
+        }
+    }
+}
+
+private struct ConfigSettingView: View {
+    @ObservedObject var viewModel: ViewModel
+    let config = FoodLensConfig()
+    
+    var body: some View {
+        VStack {
+            HStack {
+                Text("Language:")
+                
+                Spacer()
+                
+                Picker("asd", selection: self.$viewModel.selectedLanguage) {
+                    ForEach(self.config.availableLanguage, id: \.self) {
+                        Text($0.rawValue)
+                    }
+                }
+                .pickerStyle(.menu)
+            }
+            
+            HStack {
+                Text("Rotation Auto:")
+                
+                Spacer()
+                
+                Picker("asd", selection: self.$viewModel.isAutoRotate) {
+                    ForEach(self.config.trueFalse, id: \.self) {
+                        Text($0.description)
+                    }
+                }
+                .pickerStyle(.menu)
             }
         }
     }
