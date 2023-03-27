@@ -160,6 +160,7 @@ FoodLens.setLanguage(.ko)      // Korean
 
 ## 7. JSON Format
 [JSON Format](../JSON%20Format)
+
 [JSON Sample](../JSON%20Sample)
 
 
