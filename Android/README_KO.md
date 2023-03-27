@@ -52,7 +52,7 @@ Company, AppToken을 세팅 합니다.
 
 ### 2.2 공통
 * ProGuard 설정
-앱에서 proguard를 통한 난독화를 설젇할 경우 아래와 깉이 proguard 설정을 설정 파일에 추가해 주세요
+앱에서 proguard를 통한 난독화를 설정할 경우 아래와 같이 proguard 설정을 설정 파일에 추가해 주세요
 ```xml
 -keep public class com.doinglab.foodlens2.sdk.** {
        *;
@@ -73,18 +73,19 @@ FoodLens API는 FoodLens 기능을 이미지 파일기반으로 동작하게 하
 ### 4.1 음식 결과 영양정보 얻기
 1. FoodlensService 를 생성합니다.
 2. predict 메서드를 호출합니다.
-파라미터는 Jpeg image와 RecognizeResultHandler 입니다. 
-Jpeg이미지는 카메라 촬영 또는 갤러리 원본 이미지를 전달해 줍니다.  
+파라미터는 Jpeg image, userId(생략가능), RecognizeResultHandler 입니다.
+Jpeg이미지는 카메라 촬영 또는 갤러리 원본 이미지를 전달해 줍니다. userId는 없을 경우 생략 가능합니다.</br>
 ※ 이미지가 작은경우 인식율이 낮아질 수 있습니다.  
 3. 코드 예제
 ```java
-//Create Network Service
+//Create FoodLens Service
 private val foodLensService by lazy {
     FoodLens.createFoodLensService(this@MainActivity)
 }
 
 //Call prediction method.
-foodLensService.predict(byteData, object : RecognitionResultHandler {
+//foodLensService.predict(byteData, "input_userid", object : RecognitionResultHandler { //userId가 있는 경우
+foodLensService.predict(byteData, object : RecognitionResultHandler { //userId가 없는 경우 
   override fun onSuccess(result: RecognitionResult?) {
     result?.let {
       it.foodInfoList.forEach {
@@ -108,9 +109,9 @@ foodLensService.setAutoRotate(false)
 ```
 #### 4.2.2 언어 설정
 ```
-//ConfigLocale.ENGLISH, ConfigLocale.KOREA 두가지 중에 선택할 수 있습니다.
+//LanguageConfig.EN, LanguageConfig.KO 두가지 중에 선택할 수 있습니다.
 //Default는 영어입니다.
-foodLensService.setLanguage(FoodLensLocaleConfig.ENGLISH)
+foodLensService.setLanguage(LanguageConfig.EN)
 ```
 
 ## 5. SDK 상세 스펙  

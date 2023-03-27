@@ -77,6 +77,8 @@ let foodlens = FoodLens()
 #### 4.1.3 Predict images
 There are several ways to use FoodLens2. We provide three ways of concurrency.
 
+### NOTE THAT, please use ORIGINAL IMAGE, if resolution of image is low, the recognition result can be impact.
+
 ##### 4.1.3.1 Closure
 ```swift
 func predict(image: UIImage, complition: @escaping (Result<RecognitionResult, Error>) -> Void)

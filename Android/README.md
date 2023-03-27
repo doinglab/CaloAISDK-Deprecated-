@@ -73,10 +73,11 @@ FoodLens API is working based on image which contaions foods.
 
 ### 4.1 Get prediction result
 1. Create FoodlensService
-2. Call predict method with image.
-Parameters are Jpeg image and RecognizeResultHandler. 
-You can use image from Camera or Gallery.
-※NOTE THAT, please use ORIGINAL IMAGE, if resolution of image is low, the recognition result can be impact.
+2. Call the predict method. 
+Parameters are Jpeg image, userId (optional), and RecognizeResultHandler. 
+You can use image from Camera or Gallery. 
+If there is no userId, it can be omitted.</br>
+### NOTE THAT, please use ORIGINAL IMAGE, if resolution of image is low, the recognition result can be impact.
 
 3. Sample Code
 ```java
@@ -86,7 +87,8 @@ private val foodLensService by lazy {
 }
 
 //Call prediction method.
-foodLensService.predict(byteData, object : RecognitionResultHandler {
+//foodLensService.predict(byteData, "input_userid", object : RecognitionResultHandler { //If userId exists
+foodLensService.predict(byteData, object : RecognitionResultHandler { //If userId does not exist
   override fun onSuccess(result: RecognitionResult?) {
     result?.let {
       it.foodInfoList.forEach {
@@ -110,8 +112,8 @@ foodLensService.setAutoRotate(true)
 ```
 #### 4.2.2 Language setting
 ```
-//There are two options, ConfigLocale.ENGLISH, ConfigLocale.KOREA. Default is English
-foodLensService.setLanguage(FoodLensLocaleConfig.ENGLISH)
+//There are two options, LanguageConfig.EN, LanguageConfig.KO. Default is English
+foodLensService.setLanguage(LanguageConfig.EN)
 ```
 
 ## 5. SDK detail specification
