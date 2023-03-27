@@ -25,11 +25,10 @@ pod install --repo-update
 
 
 ### 1.2 Swift Package Manager(SPM)
-Select `File` -> `AddPackage` or `ProjectSetting` -> `AddPackage`  
-Search [https://bitbucket.org/doing-lab/ios_foodlens2sdk.git](https://bitbucket.org/doing-lab/ios_foodlens2sdk.git)
-
+1. Select `File` -> `AddPackage` or `ProjectSetting` -> `AddPackage`  
 <center><img src="Images/spm1.png" width="65%" height="65%"></center>
 
+2. Search [https://bitbucket.org/doing-lab/ios_foodlens2sdk.git](https://bitbucket.org/doing-lab/ios_foodlens2sdk.git)
 <center><img src="Images/spm2.png" width="70%" height="70%"></center>
 
 
