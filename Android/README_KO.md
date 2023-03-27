@@ -109,7 +109,7 @@ foodLensService.setAutoRotate(false)
 ```
 #### 4.2.2 언어 설정
 ```
-//ConfigLocale.ENGLISH, ConfigLocale.KOREA 두가지 중에 선택할 수 있습니다.
+//LanguageConfig.EN, LanguageConfig.KO 두가지 중에 선택할 수 있습니다.
 //Default는 영어입니다.
 foodLensService.setLanguage(LanguageConfig.EN)
 ```
