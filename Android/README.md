@@ -62,7 +62,6 @@ If you use code obfuscation based on proguard, pelase set below setting on progu
 ```
 
 ## 3.Set address of independent FoodLens2 server
- - Meta data추가 
    Pelase add below informaiotn on your Manifest.xml.
 ```xml
 //Pelase add only domain name or ip address instead of URL e.g) www.foodlens.com, 123.222.100.10
@@ -115,7 +114,7 @@ foodLensService.setAutoRotate(true)
 foodLensService.setLanguage(FoodLensLocaleConfig.ENGLISH)
 ```
 
-## 5. SDK detail spec
+## 5. SDK detail specification
 [API Spec](https://doinglab.github.io/foodlens2sdk/android/index.html)  
 
 ## 6. SDK Sample
