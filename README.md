@@ -1,9 +1,10 @@
-# FoodLens2SDK
+# FoodLens2SDK (CaloAISDK)
 
-FoodLens기술은 사진 촬영만으로 영상속의 음식을 인식하고 영양분석까지 수행해 주는 솔루션 입니다.
+FoodLens2(CaloAI) technology can predict calorie and nutrition based on recipe. 
+To use this technology, you should use FoodLens2(CaloAI) SDK
 
-- Android용 SDK  
-  [Android SDK 사용설명서](Android/)
+- Android SDK  
+  [Descriptin of Android SDK](Android/)
 
-- IOS용 SDK  
-  [IOS SDK 사용설명서](IOS/)
+- iOS SDK  
+  [Descriptin of iOS SDK](IOS/)
