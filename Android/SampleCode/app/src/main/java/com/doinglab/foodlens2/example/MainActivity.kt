@@ -1,6 +1,8 @@
 package com.doinglab.foodlens2.example
 
+import android.app.AlertDialog
 import android.app.Dialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -26,7 +28,7 @@ import com.doinglab.foodlens2.example.util.Utils
 
 import com.doinglab.foodlens2.sdk.FoodLens
 import com.doinglab.foodlens2.sdk.RecognitionResultHandler
-import com.doinglab.foodlens2.sdk.config.FoodLensLocaleConfig
+import com.doinglab.foodlens2.sdk.config.LanguageConfig
 import com.doinglab.foodlens2.sdk.errors.BaseError
 import com.doinglab.foodlens2.sdk.model.RecognitionResult
 import java.io.File
@@ -51,6 +53,9 @@ class MainActivity : AppCompatActivity() {
     var currentPhotoUri: Uri? = null
     var currentPhotoPath = ""
 
+    val selLaunuage = arrayOf("en", "ko")
+    val selOrientation = arrayOf("true", "false")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
@@ -58,11 +63,13 @@ class MainActivity : AppCompatActivity() {
         binding.list.adapter = listAdapter
 
         foodLensService.setAutoRotate(true)
-        //foodLensService.setLanguage(ConfigLocale.KOREA)
-        foodLensService.setLanguage(FoodLensLocaleConfig.KOREA)
+        foodLensService.setLanguage(LanguageConfig.KO)
 
         loadingDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         loadingDialog.setContentView(ProgressBar(this))
+
+        binding.tvSetLanguage.text = "Language : ${foodLensService.getLanguage()}"
+        binding.tvSetRotation.text = "Rotation Auto : ${foodLensService.getAutoRotate()}"
 
         binding.btnRunFoodlensCamera.setOnClickListener {
             openCamera(REQ_CAMERA_PICTURE)
@@ -70,6 +77,14 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnRunFoodlensGallery.setOnClickListener {
             openGallery(REQ_GALLERY_PICTURE)
+        }
+
+        binding.tvSetLanguage.setOnClickListener {
+            selectLanguageDialog()
+        }
+
+        binding.tvSetRotation.setOnClickListener {
+            selectRotationDialog()
         }
     }
 
@@ -192,6 +207,54 @@ class MainActivity : AppCompatActivity() {
 
         listAdapter.submitList(mutableList)
     }
+
+    private fun selectLanguageDialog() {
+        var selectIndex = if(foodLensService.getLanguage() == LanguageConfig.EN.launuage) 0 else 1
+
+        AlertDialog.Builder(this@MainActivity)
+            .setTitle("Select Language")
+            .setSingleChoiceItems(selLaunuage, selectIndex,
+                DialogInterface.OnClickListener{ _, i->
+                    selectIndex = i
+                })
+            .setPositiveButton("Confirm",
+                DialogInterface.OnClickListener{ _, _ ->
+                    if(selectIndex == 0) {
+                        foodLensService.setLanguage(LanguageConfig.EN)
+                    }
+                    else {
+                        foodLensService.setLanguage(LanguageConfig.KO)
+                    }
+                    binding.tvSetLanguage.text = "Language : ${foodLensService.getLanguage()}"
+                })
+            .setNegativeButton("Cancel", null)
+            .show()
+    }
+
+    private fun selectRotationDialog() {
+        var selectIndex = if(foodLensService.getAutoRotate()) 0 else 1
+
+        AlertDialog.Builder(this@MainActivity)
+            .setTitle("Select Auto Rotation")
+            .setSingleChoiceItems(selOrientation, selectIndex,
+                DialogInterface.OnClickListener{ _, i->
+                    selectIndex = i
+                })
+            .setPositiveButton("Confirm",
+                DialogInterface.OnClickListener{ _, _ ->
+                    //Log.d("bongtest", "select2 - ${i}")
+                    if(selectIndex == 0) {
+                        foodLensService.setAutoRotate(true)
+                    }
+                    else {
+                        foodLensService.setAutoRotate(false)
+                    }
+                    binding.tvSetRotation.text = "Rotation auto : ${foodLensService.getAutoRotate()}"
+                })
+            .setNegativeButton("Cancel", null)
+            .show()
+    }
+
 
     fun createImageFile() : File {
         val imageFileName = "JPEG_Image"
