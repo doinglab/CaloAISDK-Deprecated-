@@ -78,7 +78,7 @@ Jpeg이미지는 카메라 촬영 또는 갤러리 원본 이미지를 전달해
 ※ 이미지가 작은경우 인식율이 낮아질 수 있습니다.  
 3. 코드 예제
 ```java
-//Create Network Service
+//Create FoodLens Service
 private val foodLensService by lazy {
     FoodLens.createFoodLensService(this@MainActivity)
 }
