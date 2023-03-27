@@ -8,27 +8,23 @@ FoodLens functionality is available using the FoodLens SDK for iOS.
 - Swift Version 4.2 or higher
 
 
-## Installation
+## 1. iOS project setting
 
-```swift
-import FoodLens2
-```
-
-### CocoaPods
-1. Add below into your `Podfile`:  
+### 1.1 CocoaPods
+Please add below line into your `Podfile`:  
 
 ```
 pod 'FoodLens2'
 ```
 
-2. If `pod install` is not searched for `Foodlens2`:
+If `pod install` is not searched for `Foodlens2`:
 
 ```
 pod install --repo-update
 ```
 
 
-### Swift Package Manager(SPM)
+### 1.2 Swift Package Manager(SPM)
 Select `File` -> `AddPackage` or `ProjectSetting` -> `AddPackage`  
 Search [https://bitbucket.org/doing-lab/ios_foodlens2sdk.git](https://bitbucket.org/doing-lab/ios_foodlens2sdk.git)
 
@@ -36,18 +32,49 @@ Search [https://bitbucket.org/doing-lab/ios_foodlens2sdk.git](https://bitbucket.
 ![](Images/spm2.png)
 
 
-## Using FoodLens
+## 2. Resources and info.plist setting
 
-### Authentication
+### 2.1 AppToken, CompanyToken setting
+FIXME setting on info.plist 
+
+### 2.2 Permission Setting
+Please add below lines on your info.plist
+- Privacy - Camera Usage Description
+- Privacy - Photo Library Additions Usage Description
+- Privacy - Photo Library Usage Description
+
+
+## 3. Set address of independent FoodLens2 server
+If you want to use independent FoodLens2 server instead of FoodLens2 Server.
+Please add below informaiotn on your info.plist
+ 
+```swift
+//Pelase add only domain name or ip address instead of URL e.g) www.foodlens.com, 123.222.100.10
+```
+<img src="./Images/infoplist.png">
+
+## 4. How to use SDK
+FoodLens API is working based on image which contaions foods.
+
+### 4.1 Get prediction result
+1. Create FoodlensService
+2. Call predict method with image.
+
+#### 4.1.1 Library import
+```swift
+import FoodLens2
+```
+
+#### 4.1.2 Create FoodLens2 service
 ```swift
 // Please enter Company Token and App Token
 FoodLens.createFoodLensService(companyToken: "<Company Token>", appToken: "<App Token>")
 ```
 
-### Predict Food Images
-FoodLens provide three ways of concurrency.
+#### 4.1.3 Predict images
+There are several ways to use FoodLens2. We provide three ways of concurrency.
 
-#### 1. Closure
+##### 4.1.3.1 Closure
 ```swift
 func predict(image: UIImage, complition: @escaping (Result<RecognitionResult, Error>) -> Void)
 ```
@@ -65,7 +92,7 @@ FoodLens.shared.predict(image: image) { result in
 }
 ```
 
-#### 2. Combine
+##### 4.1.3.2 Combine
 ```swift
 func predictPublisher(image: UIImage) -> AnyPublisher<RecognitionResult, Error>
 ```
@@ -87,7 +114,7 @@ FoodLens.shared.predictPublisher(image: image)
     .store(in: &self.cancellable)
 ```
 
-#### 3. async/await
+##### 4.1.3.2 async/await
 ```swift
 func predict(image: UIImage) async -> Result<RecognitionResult, Error>
 ```
@@ -107,46 +134,34 @@ Task {
 ```
 
 
-### Other Settings
+### 4.2 FoodLens2 Options
 
-#### Set language
-
-```swfit
-FoodLens.setLanguage(.en)      // English(default)
-FoodLens.setLanguage(.ko)      // Korean
-FoodLens.setLanguage(.current) // Device Setting
-```
-
-#### Set Auto Rotate
-- Return box coordinates based on 'Top Left' orientation of image exif
-
+#### 4.2.1 Auto image rotation based on Exif orientation information
 ```swift
+//You can use image rotation based on Exit information, if you set true, food coordinate can be rotated based Exit information.
+//Default value is true
 FoodLens.setAutoRotate(true)
 ```
 
-- Return box coordinates based on source image orientation
 
-```swift
-FoodLens.setAutoRotate(false)
+#### 4.2.2 Language setting
+```swfit
+//There are two options, English, Korea. Default is English
+FoodLens.setLanguage(.en)      // English(default)
+FoodLens.setLanguage(.ko)      // Korean
 ```
 
-#### Setting an Independent FoodLens Server Address
 
-```Swift
-// Please enter URL String
-FoodLens.setCustomURL("<URL>")
-```
-
-## SDK Detailed specification
+## 5. SDK detail specification
 [API Documents](https://doinglab.github.io/foodlens2sdk/ios/index.html)
 
-## SDK Example
+## 6. SDK Example
 [Sample Code](https://github.com/doinglab/FoodLens2SDK/tree/main/IOS/SampleCode/)
 
+## 7. JSON Format
+[JSON Format](../JSON%20Format)
+[JSON Sample](../JSON%20Sample)
 
-## Author
-hyunsuk.lee@doinglab.com
 
-
-## License
+## 8. License
 FoodLens is available under the MIT license. See the LICENSE file for more info.
