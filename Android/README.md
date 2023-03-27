@@ -1,13 +1,14 @@
-# Android용 FoodLens2 SDK 메뉴얼
+# FoodLens2(CaloAI) SDK Android Manual
+## [한국어 메뉴얼](README_KO.md)
 
-Android용 FoodLens2 SDK를 사용하여 FoodLens2 기능을 이용할 수 있습니다. 
+If you want to use FoodLens2(CaloAI), please use this SDK. Please check below descriptions. 
 
-## [ReleaseNote 바로가기](ReleaseNote.md)
+## [ReleaseNote](ReleaseNote.md)
 
-## 1. 안드로이드 프로젝트 설정
+## 1. Android project setting
 
-### 1.1 Android 12 지원
-Android 12 지원을 위해 Compile SDK Version을 31이상으로 설정해 주세요. 프로젝트에서 app > Gradle Scripts(그래들 스크립트) > build.gradle (Module: app)을 연 후 android{} 섹션에 아래와 같은 문구를 추가해 주세요.
+### 1.1 Support Android 12
+If you want to use Android 12, please set Compile SDK Version over 31. Open app > Gradle Scripts(Gradle Script) > build.gradle (Module: app) and change compileSdkVerion like below.
 
 ```java
 android {
@@ -17,9 +18,9 @@ android {
     }
 ```
 
-### 1.2 gradle 설정
-#### 1.2.1 minSdkVersion 설정
-- minSdkVersion은 21 이상을 사용하시기 바랍니다. 프로젝트에서 app > Gradle Scripts(그래들 스크립트) > build.gradle (Module: app)을 연 후 defaultConfig{} 섹션에 아래와 같은 문구를 추가해 주세요.
+### 1.2 Gradle setting
+#### 1.2.1 minSdkVersion setting
+- You need to set minSdkVersion over 21. Open app > Gradle Scripts(Gradle Script) > build.gradle (Module: app) and change defaultConfig{} section like below.
 ```java
    defaultConfig {
         ....
@@ -27,56 +28,57 @@ android {
 	....       
     }
 ```
-#### 1.2.2 gradle dependencies 설정
-- 프로젝트에서 app > Gradle Scripts(그래들 스크립트) > build.gradle (Module: app)을 연 후 dependencies{} 섹션에 아래와 같은 문구를 추가해 주세요.
+#### 1.2.2 Gradle dependencies setting
+- Open app > Gradle Scripts(Gradle Script) > build.gradle (Module: app) and add foodlens sdk like below in dependencies{} section.
 ```java
    implementation "com.doinglab.foodlens:FoodLens2:1.0.0"
 ```
 
-## 2. 리소스(Resources) 및 메니페스트(Manifests) 
-Company, AppToken을 세팅 합니다.
+## 2. Resources and Manifests setting
+If you want to use FoodLens2SDK, you need to set CompanyToken, AppToken in Manifests.
 
-### 2.1 AppToken, CompanyToken 설정
-발급된 AppToken, CompanyToken을 /app/res/values/strings.xml에 추가 합니다.
+### 2.1 AppToken, CompanyToken setting
+Please add issued AppToken, CompanyToken on your /app/res/values/strings.xml.
 ```xml
 <string name="foodlens_app_token">[AppToken]</string>
 <string name="foodlens_company_token">[CompanyToken]</string>
 ```
 
-* Meta data추가
-아래와 같이 메타데이터를 Manifest.xml에 추가해 주세요
+* Add Meta data
+After that, please add your token like below in Manifest.xml.
 ```xml
 <meta-data android:name="com.doinglab.foodlens.sdk.apptoken" android:value="@string/foodlens_app_token"/> 
 <meta-data android:name="com.doinglab.foodlens.sdk.companytoken" android:value="@string/foodlens_company_token"/> 
 ```
 
-### 2.2 공통
-* ProGuard 설정
-앱에서 proguard를 통한 난독화를 설젇할 경우 아래와 깉이 proguard 설정을 설정 파일에 추가해 주세요
+### 2.2 Common
+* ProGuard Setting
+If you use code obfuscation based on proguard, pelase set below setting on proguard property file.
 ```xml
 -keep public class com.doinglab.foodlens2.sdk.** {
        *;
 }
 ```
 
-## 3.독립 FoodLens 서버 주소 설정
+## 3.Set address of independent FoodLens2 server
  - Meta data추가 
-   아래와 같이 메타데이터를 Manifest.xml에 추가해 주세요
+   Pelase add below informaiotn on your Manifest.xml.
 ```xml
-//프로토콜과 및 포트를 제외한 순수 도메인 주소 혹은 IP주소 e.g) www.foodlens.com, 123.222.100.10
+//Pelase add only domain name or ip address instead of URL e.g) www.foodlens.com, 123.222.100.10
 <meta-data android:name="com.doinglab.foodlens.sdk.serveraddr" android:value="[server_address]"/> 
 ```  
 
-## 4. SDK 사용법 사용법
-FoodLens API는 FoodLens 기능을 이미지 파일기반으로 동작하게 하는 기능입니다.
+## 4. How to use SDK
+FoodLens API is working based on image which contaions foods.
 
-### 4.1 음식 결과 영양정보 얻기
-1. FoodlensService 를 생성합니다.
-2. predict 메서드를 호출합니다.
-파라미터는 Jpeg image와 RecognizeResultHandler 입니다. 
-Jpeg이미지는 카메라 촬영 또는 갤러리 원본 이미지를 전달해 줍니다.  
-※ 이미지가 작은경우 인식율이 낮아질 수 있습니다.  
-3. 코드 예제
+### 4.1 Get prediction result
+1. Create FoodlensService
+2. Call predict method with image.
+Parameters are Jpeg image and RecognizeResultHandler. 
+You can use image from Camera or Gallery.
+※NOTE THAT, please use ORIGINAL IMAGE, if resolution of image is low, the recognition result can be impact.
+
+3. Sample Code
 ```java
 //Create Network Service
 private val foodLensService by lazy {
@@ -99,25 +101,24 @@ foodLensService.predict(byteData, object : RecognitionResultHandler {
 })
 ```
 
-### 4.2 옵션 변경
-#### 4.2.1 이미지 회전 기능 지원 여부
+### 4.2 FoodLens2 Options
+#### 4.2.1 Auto image rotation based on Exif
 ```
-//true인 경우 회전이 적용된 좌표값이 반환됩니다.
-//Default는 false 입니다
-foodLensService.setAutoRotate(false)
+//You can use image rotation based on Exit information, if you set true, food coordinate can be rotated based Exit information.
+//Default value is true
+foodLensService.setAutoRotate(true)
 ```
-#### 4.2.2 언어 설정
+#### 4.2.2 Language setting
 ```
-//ConfigLocale.ENGLISH, ConfigLocale.KOREA 두가지 중에 선택할 수 있습니다.
-//Default는 영어입니다.
+//There are two options, ConfigLocale.ENGLISH, ConfigLocale.KOREA. Default is English
 foodLensService.setLanguage(FoodLensLocaleConfig.ENGLISH)
 ```
 
-## 5. SDK 상세 스펙  
-[상세 API 명세](https://doinglab.github.io/foodlens2sdk/android/index.html)  
+## 5. SDK detail spec
+[API Spec](https://doinglab.github.io/foodlens2sdk/android/index.html)  
 
-## 6. SDK 사용 예제 
-[Sample 예제](SampleCode/)
+## 6. SDK Sample
+[Sample](SampleCode/)
 
 ## 7. JSON Format
 [JSON Format](../JSON%20Format)
