@@ -1,0 +1,1 @@
+# Android FoodLens2SDK Release Note
