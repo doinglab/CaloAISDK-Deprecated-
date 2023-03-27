@@ -28,14 +28,17 @@ pod install --repo-update
 Select `File` -> `AddPackage` or `ProjectSetting` -> `AddPackage`  
 Search [https://bitbucket.org/doing-lab/ios_foodlens2sdk.git](https://bitbucket.org/doing-lab/ios_foodlens2sdk.git)
 
-![](Images/spm1.png)
-![](Images/spm2.png)
+<center><img src="Images/spm1.png" width="65%" height="65%"></center>
+
+<center><img src="Images/spm2.png" width="70%" height="70%"></center>
 
 
 ## 2. Resources and info.plist setting
 
 ### 2.1 AppToken, CompanyToken setting
 FIXME setting on info.plist 
+
+<img src="./Images/infoplist_token.png">
 
 ### 2.2 Permission Setting
 Please add below lines on your info.plist
@@ -51,7 +54,7 @@ Please add below informaiotn on your info.plist
 ```swift
 //Pelase add only domain name or ip address instead of URL e.g) www.foodlens.com, 123.222.100.10
 ```
-<img src="./Images/infoplist.png">
+<img src="./Images/infoplist_addr.png">
 
 ## 4. How to use SDK
 FoodLens API is working based on image which contaions foods.
@@ -67,8 +70,8 @@ import FoodLens2
 
 #### 4.1.2 Create FoodLens2 service
 ```swift
-// Please enter Company Token and App Token
-FoodLens.createFoodLensService(companyToken: "<Company Token>", appToken: "<App Token>")
+// create an instance
+let foodlens = FoodLens()
 ```
 
 #### 4.1.3 Predict images
@@ -80,13 +83,12 @@ func predict(image: UIImage, complition: @escaping (Result<RecognitionResult, Er
 ```
 
 ```swift
-FoodLens.shared.predict(image: image) { result in
+foodLens.predict(image: image) { result in
     switch result {
     case .success(let response):
-        DispatchQueue.main.async {
-            self.predictResponses = response
-        }
+        print(response)
     case .failure(let error):
+        // Handle error.
         print(error.localizedDescription)
     }
 }
@@ -98,18 +100,17 @@ func predictPublisher(image: UIImage) -> AnyPublisher<RecognitionResult, Error>
 ```
 
 ```swift
-FoodLens.shared.predictPublisher(image: image)
+foodlens.predictPublisher(image: image)
     .sink(receiveCompletion: { output in
         switch output {
         case .finished:
             print("Publisher finished")
         case .failure(let error):
+            // Handle error.
             print(error.localizedDescription)
         }
     }, receiveValue: { response in
-        DispatchQueue.main.async {
-            self.predictResponses = response
-        }
+        print(response)
     })
     .store(in: &self.cancellable)
 ```
@@ -121,13 +122,12 @@ func predict(image: UIImage) async -> Result<RecognitionResult, Error>
 
 ```swift
 Task {
-    let result = await FoodLens.shared.predict(image: image)
+    let result = await foodLens.predict(image: image)
     switch result {
     case .success(let response):
-        DispatchQueue.main.async {
-            self.predictResponse = response
-        }
+        print(response)
     case .failure(let error):
+        // Handle error.
         print(error.localizedDescription)
     }
 }
@@ -138,17 +138,17 @@ Task {
 
 #### 4.2.1 Auto image rotation based on Exif orientation information
 ```swift
-//You can use image rotation based on Exit information, if you set true, food coordinate can be rotated based Exit information.
-//Default value is true
-FoodLens.setAutoRotate(true)
+// You can use image rotation based on Exit information, if you set true, food coordinate can be rotated based Exit information.
+// Default value is true
+foodLens.setAutoRotate(true)
 ```
 
 
 #### 4.2.2 Language setting
 ```swfit
-//There are two options, English, Korea. Default is English
-FoodLens.setLanguage(.en)      // English(default)
-FoodLens.setLanguage(.ko)      // Korean
+// There are two options, English, Korea. Default is English
+foodLens.setLanguage(.en)      // English(default)
+foodLens.setLanguage(.ko)      // Korean
 ```
 
 

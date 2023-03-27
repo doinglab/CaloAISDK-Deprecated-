@@ -3,8 +3,8 @@
 <plist version="1.0">
 <dict>
 	<key>FoodLensAppToken</key>
-	<string></string>
+	<string>&lt;AppToken&gt;</string>
 	<key>FoodLensCompanyToken</key>
-	<string></string>
+	<string>&lt;CompanyToken&gt;</string>
 </dict>
 </plist>
