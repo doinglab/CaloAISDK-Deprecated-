@@ -76,7 +76,7 @@ FoodLens API is working based on image which contaions foods.
 2. Call predict method with image.
 Parameters are Jpeg image and RecognizeResultHandler. 
 You can use image from Camera or Gallery.
-※NOTE THAT, please use ORIGINAL IMAGE, if resolution of image is low, the recognition result can be impact.
+### NOTE THAT, please use ORIGINAL IMAGE, if resolution of image is low, the recognition result can be impact.
 
 3. Sample Code
 ```java
