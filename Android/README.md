@@ -53,6 +53,7 @@ After that, please add your token like below in Manifest.xml.
 
 ### 2.2 Common
 * ProGuard Setting
+
 If you use code obfuscation based on proguard, pelase set below setting on proguard property file.
 ```xml
 -keep public class com.doinglab.foodlens2.sdk.** {
@@ -102,7 +103,7 @@ foodLensService.predict(byteData, object : RecognitionResultHandler {
 ```
 
 ### 4.2 FoodLens2 Options
-#### 4.2.1 Auto image rotation based on Exif
+#### 4.2.1 Auto image rotation based on Exif orientation information
 ```
 //You can use image rotation based on Exit information, if you set true, food coordinate can be rotated based Exit information.
 //Default value is true
