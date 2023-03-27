@@ -58,34 +58,41 @@ private struct ImageSelectButtons: View {
 
 private struct ConfigSettingView: View {
     @ObservedObject var viewModel: ViewModel
-    let config = FoodLensConfig()
+    let trueFalse: [Bool] = [true, false]
     
     var body: some View {
-        VStack {
+        Menu {
+            Picker("", selection: self.$viewModel.selectedLanguage) {
+                ForEach(LanguageConfig.allCases, id: \.self) {
+                    Text($0.rawValue)
+                }
+            }
+        } label: {
             HStack {
                 Text("Language:")
+                    .foregroundColor(.white)
                 
                 Spacer()
                 
-                Picker("asd", selection: self.$viewModel.selectedLanguage) {
-                    ForEach(self.config.availableLanguage, id: \.self) {
-                        Text($0.rawValue)
-                    }
-                }
-                .pickerStyle(.menu)
+                Text(self.viewModel.selectedLanguage.rawValue)
+                
             }
-            
+        }
+
+        Menu {
+            Picker("", selection: self.$viewModel.isAutoRotate) {
+                ForEach(self.trueFalse, id: \.self) {
+                    Text($0.description)
+                }
+            }
+        } label: {
             HStack {
                 Text("Rotation Auto:")
-                
+                    .foregroundColor(.white)
+
                 Spacer()
-                
-                Picker("asd", selection: self.$viewModel.isAutoRotate) {
-                    ForEach(self.config.trueFalse, id: \.self) {
-                        Text($0.description)
-                    }
-                }
-                .pickerStyle(.menu)
+
+                Text(self.viewModel.isAutoRotate.description)
             }
         }
     }
