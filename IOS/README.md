@@ -137,6 +137,8 @@ FoodLens.setAutoRotate(false)
 FoodLens.setCustomURL("<URL>")
 ```
 
+## SDK Detailed specification
+[API Documents](https://doinglab.github.io/foodlens2sdk/ios/index.html)
 
 ## SDK Example
 [Sample Code](https://github.com/doinglab/FoodLens2SDK/tree/main/IOS/SampleCode/)
