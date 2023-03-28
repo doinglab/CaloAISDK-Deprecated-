@@ -70,7 +70,7 @@ private struct ConfigSettingView: View {
         } label: {
             HStack {
                 Text("Language:")
-                    .foregroundColor(.white)
+                    .foregroundColor(.primary)
                 
                 Spacer()
                 
@@ -88,7 +88,7 @@ private struct ConfigSettingView: View {
         } label: {
             HStack {
                 Text("Rotation Auto:")
-                    .foregroundColor(.white)
+                    .foregroundColor(.primary)
 
                 Spacer()
 
