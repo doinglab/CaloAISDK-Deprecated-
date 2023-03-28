@@ -35,7 +35,7 @@ pod install --repo-update
 ## 2. Resources and info.plist setting
 
 ### 2.1 AppToken, CompanyToken setting
-FIXME setting on info.plist 
+Add your AppToken, CompanyToken on info.plist 
 
 <img src="./Images/infoplist_token.png">
 
