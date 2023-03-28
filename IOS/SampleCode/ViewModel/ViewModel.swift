@@ -20,6 +20,9 @@ class ViewModel: ObservableObject {
     @Published var selectedLanguage: LanguageConfig = .en
     @Published var isAutoRotate: Bool = true
     
+    var isImageRotate: Bool = true
+    
+    let userId: String = UUID().uuidString
     let foodlens: FoodLens = .init()
     
     private var cancellable: Set<AnyCancellable> = .init()
@@ -38,7 +41,7 @@ class ViewModel: ObservableObject {
         
         self.startLoading()
         Task {
-            let result = await foodlens.predict(image: image)
+            let result = await foodlens.predict(image: image, userId: self.userId)
             switch result {
             case .success(let response):
                 self.stopLoading()
@@ -58,7 +61,7 @@ class ViewModel: ObservableObject {
         }
         
         self.startLoading()
-        foodlens.predictPublisher(image: image)
+        foodlens.predictPublisher(image: image, userId: self.userId)
             .sink(receiveCompletion: { output in
                 switch output {
                 case .finished:
@@ -82,7 +85,7 @@ class ViewModel: ObservableObject {
         }
         
         self.startLoading()
-        foodlens.predict(image: image) { result in
+        foodlens.predict(image: image, userId: self.userId) { result in
             switch result {
             case .success(let response):
                 self.stopLoading()
@@ -108,6 +111,7 @@ class ViewModel: ObservableObject {
             .sink { image in
                 self.predictResponses.foodInfoList.removeAll()
                 self.asyncPredict(image)
+                self.isImageRotate = self.isAutoRotate
             }
             .store(in: &self.cancellable)
     }

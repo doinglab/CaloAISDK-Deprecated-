@@ -100,10 +100,14 @@ private struct ConfigSettingView: View {
 
 private struct PredictResultView: View {
     @ObservedObject var viewModel: ViewModel
-        
+
     var body: some View {
         ForEach(viewModel.predictResponses.foodInfoList, id: \.self) {
-            PredictResultElementView(image: viewModel.selectedImage.fixedOrientation() ?? UIImage(), foodInfo: $0)
+            if let rotateImage = viewModel.selectedImage.fixedOrientation(),
+               let cgImage = viewModel.selectedImage.cgImage {
+                let image = viewModel.isImageRotate ? rotateImage : UIImage(cgImage: cgImage, scale: 1.0, orientation: .up)
+                PredictResultElementView(image: image, foodInfo: $0)
+            }
         }
     }
 }
