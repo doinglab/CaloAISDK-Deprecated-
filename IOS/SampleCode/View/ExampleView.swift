@@ -35,6 +35,13 @@ struct ExampleView: View {
                 PHPicker(selectedImage: $viewModel.selectedImage)
             }
         }
+        .alert(isPresented: self.$viewModel.isShowAlert) {
+            Alert(
+                title: Text(""),
+                message: Text(self.viewModel.alertMessage),
+                dismissButton: .default(Text("confirm"))
+            )
+        }
         .loadingIndicator(isLoading: self.$viewModel.isLoading)
     }
 }

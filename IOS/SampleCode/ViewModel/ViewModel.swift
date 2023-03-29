@@ -29,6 +29,9 @@ class ViewModel: ObservableObject {
     
     @Published var sheetContentMode: SheetContentMode?
     
+    @Published var isShowAlert: Bool = false
+    @Published var alertMessage: String = ""
+    
     var isImageRotate: Bool = true
     
     let userId: String = "Doinglab_iOS"
@@ -54,11 +57,16 @@ class ViewModel: ObservableObject {
             switch result {
             case .success(let response):
                 self.stopLoading()
+                if response.foodInfoList.isEmpty {
+                    self.showAelrt(message: "No predict results")
+                    return
+                }
                 DispatchQueue.main.async {
                     self.predictResponses = response
                 }
             case .failure(let error):
                 self.stopLoading()
+                self.showAelrt(message: error.localizedDescription)
                 print(error.localizedDescription)
             }
         }
@@ -77,10 +85,15 @@ class ViewModel: ObservableObject {
                     print("Publisher finished")
                 case .failure(let error):
                     self.stopLoading()
+                    self.showAelrt(message: error.localizedDescription)
                     print(error.localizedDescription)
                 }
             }, receiveValue: { response in
                 self.stopLoading()
+                if response.foodInfoList.isEmpty {
+                    self.showAelrt(message: "No predict results")
+                    return
+                }
                 DispatchQueue.main.async {
                     self.predictResponses = response
                 }
@@ -98,13 +111,25 @@ class ViewModel: ObservableObject {
             switch result {
             case .success(let response):
                 self.stopLoading()
+                if response.foodInfoList.isEmpty {
+                    self.showAelrt(message: "No predict results")
+                    return
+                }
                 DispatchQueue.main.async {
                     self.predictResponses = response
                 }
             case .failure(let error):
                 self.stopLoading()
+                self.showAelrt(message: error.localizedDescription)
                 print(error.localizedDescription)
             }
+        }
+    }
+    
+    private func showAelrt(message: String) {
+        DispatchQueue.main.async {
+            self.isShowAlert = true
+            self.alertMessage = message
         }
     }
     
