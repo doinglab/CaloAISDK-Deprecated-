@@ -9,20 +9,29 @@ import UIKit
 import FoodLens2
 import Combine
 
+enum SheetContentMode: Identifiable {
+    case camera
+    case gallery
+    
+    var id: Int {
+        hashValue
+    }
+}
+
 class ViewModel: ObservableObject {
     @Published var selectedImage: UIImage = .init()
     @Published var predictResponses: RecognitionResult = .init()
-    
-    @Published var isShowPhotoPicker: Bool = false
-    @Published var isShowCarmera: Bool = false
+
     @Published var isLoading: Bool = false
     
     @Published var selectedLanguage: LanguageConfig = .en
     @Published var isAutoRotate: Bool = true
     
+    @Published var sheetContentMode: SheetContentMode?
+    
     var isImageRotate: Bool = true
     
-    let userId: String = "ABCDEFG"
+    let userId: String = "Doinglab_iOS"
     let foodlens: FoodLens = .init()
     
     private var cancellable: Set<AnyCancellable> = .init()

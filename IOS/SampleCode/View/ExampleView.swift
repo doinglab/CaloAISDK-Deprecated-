@@ -26,11 +26,14 @@ struct ExampleView: View {
             }
             .padding(.horizontal, 20)
         }
-        .fullScreenCover(isPresented: $viewModel.isShowPhotoPicker) {
-            PHPicker(selectedImage: $viewModel.selectedImage)
-        }
-        .fullScreenCover(isPresented: $viewModel.isShowCarmera) {
-            CameraView(selectedImage: $viewModel.selectedImage)
+        .fullScreenCover(item: self.$viewModel.sheetContentMode) { item in
+            switch item {
+            case .camera:
+                CameraView(selectedImage: $viewModel.selectedImage)
+                
+            case .gallery:
+                PHPicker(selectedImage: $viewModel.selectedImage)
+            }
         }
         .loadingIndicator(isLoading: self.$viewModel.isLoading)
     }
@@ -43,12 +46,16 @@ private struct ImageSelectButtons: View {
         VStack(spacing: 20.0) {
             VStack(spacing: 12.0) {
                 Button("Camera") {
-                    viewModel.isShowCarmera = true
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
+                        self.viewModel.sheetContentMode = .camera
+                    }
                 }
                 .buttonStyle(TitleButton())
                 
                 Button("Photo Library") {
-                    viewModel.isShowPhotoPicker = true
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
+                        self.viewModel.sheetContentMode = .gallery
+                    }
                 }
                 .buttonStyle(TitleButton())
             }

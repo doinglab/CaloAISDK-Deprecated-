@@ -15,5 +15,6 @@ struct TitleButton: ButtonStyle {
             .background(Color.gray)
             .foregroundColor(.white)
             .clipShape(Capsule())
+            .opacity(configuration.isPressed ? 0.4 : 1.0)
     }
 }
