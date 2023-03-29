@@ -26,10 +26,10 @@ struct ExampleView: View {
             }
             .padding(.horizontal, 20)
         }
-        .sheet(isPresented: $viewModel.isShowPhotoPicker) {
+        .fullScreenCover(isPresented: $viewModel.isShowPhotoPicker) {
             PHPicker(selectedImage: $viewModel.selectedImage)
         }
-        .sheet(isPresented: $viewModel.isShowCarmera) {
+        .fullScreenCover(isPresented: $viewModel.isShowCarmera) {
             CameraView(selectedImage: $viewModel.selectedImage)
         }
         .loadingIndicator(isLoading: self.$viewModel.isLoading)

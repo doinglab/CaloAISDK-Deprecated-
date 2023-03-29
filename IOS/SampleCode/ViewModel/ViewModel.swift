@@ -22,7 +22,7 @@ class ViewModel: ObservableObject {
     
     var isImageRotate: Bool = true
     
-    let userId: String = UUID().uuidString
+    let userId: String = "ABCDEFG"
     let foodlens: FoodLens = .init()
     
     private var cancellable: Set<AnyCancellable> = .init()
