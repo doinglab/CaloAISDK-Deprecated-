@@ -1,5 +1,6 @@
 package com.doinglab.foodlens2.example
 
+import android.Manifest
 import android.app.AlertDialog
 import android.app.Dialog
 import android.content.DialogInterface
@@ -19,6 +20,8 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.databinding.DataBindingUtil
 import com.doinglab.foodlens2.example.databinding.ActivityMainBinding
@@ -53,17 +56,15 @@ class MainActivity : AppCompatActivity() {
     var currentPhotoUri: Uri? = null
     var currentPhotoPath = ""
 
-    val selLaunuage = arrayOf("en", "ko")
-    val selOrientation = arrayOf("true", "false")
+    private val selLaunuage = arrayOf("en", "ko")
+    private val selOrientation = arrayOf("true", "false")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        requestPermission()
 
         binding.list.adapter = listAdapter
-
-        foodLensService.setAutoRotate(true)
-        foodLensService.setLanguage(LanguageConfig.KO)
 
         loadingDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         loadingDialog.setContentView(ProgressBar(this))
@@ -196,7 +197,7 @@ class MainActivity : AppCompatActivity() {
                         id = it.hashCode(),
                         title = "${it.name}",
                         icon = BitmapDrawable(resources, bitmap),
-                        foodPosition = "${getString(R.string.food_position)} : ${xMin}, ${yMin}, ${yMax}, ${yMax}",
+                        foodPosition = "${getString(R.string.food_position)} : ${xMin}, ${yMin}, ${xMax}, ${yMax}",
                         foodNutrition = "${getString(R.string.carbohydrate)} : ${it.carbohydrate}, " +
                                 "${getString(R.string.protein)} : ${it.protein}, " +
                                 "${getString(R.string.fat)} : ${it.fat}"
@@ -242,7 +243,6 @@ class MainActivity : AppCompatActivity() {
                 })
             .setPositiveButton("Confirm",
                 DialogInterface.OnClickListener{ _, _ ->
-                    //Log.d("bongtest", "select2 - ${i}")
                     if(selectIndex == 0) {
                         foodLensService.setAutoRotate(true)
                     }
@@ -256,7 +256,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    fun createImageFile() : File {
+    private fun createImageFile() : File {
         val imageFileName = "JPEG_Image"
         val imagePath: File? = getExternalFilesDir("images")
 
@@ -276,9 +276,32 @@ class MainActivity : AppCompatActivity() {
         return newFile
     }
 
+    private fun requestPermission() {
+        val permissionList =
+            arrayOf(
+                Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            )
+
+        if (permissionList.map { ContextCompat.checkSelfPermission(this, it) }.filter { it == PackageManager.PERMISSION_DENIED }.isNullOrEmpty()) {
+            Log.d("FoodlensSample", "permission complete")
+        } else {
+            ActivityCompat.requestPermissions(this, permissionList, REQUEST_PERMISSION)
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+    }
+
     companion object {
         private const val REQ_GALLERY_PICTURE = 0x02
         private const val REQ_CAMERA_PICTURE = 0x03
+        private const val REQUEST_PERMISSION = 101
     }
 
 
