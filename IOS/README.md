@@ -4,7 +4,7 @@ FoodLens functionality is available using the FoodLens SDK for iOS.
 
 ## Requirements
 
-- iOS Ver 13.0 or higher
+- iOS Version 13.0 or higher
 - Swift Version 4.2 or higher
 
 
@@ -48,19 +48,19 @@ Please add below lines on your info.plist
 
 ## 3. Set address of independent FoodLens2 server
 If you want to use independent FoodLens2 server instead of FoodLens2 Server.
-Please add below informaiotn on your info.plist
+Please add below informatiotn on your info.plist
  
 ```swift
-//Pelase add only domain name or ip address instead of URL e.g) www.foodlens.com, 123.222.100.10
+//Please add only domain name or ip address instead of URL e.g) www.foodlens.com, 123.222.100.10
 ```
 <img src="./Images/infoplist_addr.png">
 
 ## 4. How to use SDK
-FoodLens API is working based on image which contaions foods.
+FoodLens API works based on the images that contain foods.
 
 ### 4.1 Get prediction result
 1. Create FoodlensService
-2. Call predict method with image.
+2. Call the predict method with an image.
 
 #### 4.1.1 Library import
 ```swift
@@ -80,7 +80,7 @@ There are several ways to use FoodLens2. We provide three ways of concurrency.
 
 ##### 4.1.3.1 Closure
 ```swift
-func predict(image: UIImage, complition: @escaping (Result<RecognitionResult, Error>) -> Void)
+func predict(image: UIImage, completion: @escaping (Result<RecognitionResult, Error>) -> Void)
 ```
 
 ```swift
@@ -137,9 +137,9 @@ Task {
 
 ### 4.2 FoodLens2 Options
 
-#### 4.2.1 Auto image rotation based on Exif orientation information
+#### 4.2.1 Auto image rotation based on EXIF orientation information
 ```swift
-// You can use image rotation based on Exit information, if you set true, food coordinate can be rotated based Exit information.
+// You can use image rotation based on EXIF information, if you set true, food coordinate can be rotated based EXIF information.
 // Default value is true
 foodLens.setAutoRotate(true)
 ```
