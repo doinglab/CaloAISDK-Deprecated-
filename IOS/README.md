@@ -1,5 +1,5 @@
 # iOS FoodLens SDK Manual
-
+## [ReleaseNote](ReleaseNote.md)
 FoodLens functionality is available using the FoodLens SDK for iOS.
 
 ## Requirements
