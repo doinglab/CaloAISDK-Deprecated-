@@ -6,5 +6,7 @@
 	<string>&lt;AppToken&gt;</string>
 	<key>FoodLensCompanyToken</key>
 	<string>&lt;CompanyToken&gt;</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Please Allow</string>
 </dict>
 </plist>

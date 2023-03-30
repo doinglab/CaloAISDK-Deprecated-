@@ -145,6 +145,8 @@ class ViewModel: ObservableObject {
             .sink { image in
                 self.predictResponses.foodInfoList.removeAll()
                 self.asyncPredict(image)
+//                self.combinePredeict(image)
+//                self.closurePredict(image)
                 self.isImageRotate = self.isAutoRotate
             }
             .store(in: &self.cancellable)

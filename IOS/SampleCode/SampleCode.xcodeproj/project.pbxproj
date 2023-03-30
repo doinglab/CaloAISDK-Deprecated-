@@ -468,7 +468,7 @@
 			repositoryURL = "https://bitbucket.org/doing-lab/ios_foodlens2sdk";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.2.1;
+				minimumVersion = 1.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
