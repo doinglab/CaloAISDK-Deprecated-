@@ -1,9 +1,8 @@
 # FoodLens2(CaloAI) SDK Android Manual
 ## [한국어 메뉴얼](README_KO.md)
+## [ReleaseNote](ReleaseNote.md)
 
 If you want to use FoodLens2(CaloAI), please use this SDK. Please check below descriptions. 
-
-## [ReleaseNote](ReleaseNote.md)
 
 ## 1. Android project setting
 
