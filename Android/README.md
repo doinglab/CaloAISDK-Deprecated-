@@ -54,7 +54,7 @@ After that, please add your token like below in Manifest.xml.
 ### 2.2 Common
 * ProGuard Setting
 
-If you use code obfuscation based on proguard, pelase set below setting on proguard property file.
+If you use code obfuscation based on proguard, please set below setting on proguard property file.
 ```xml
 -keep public class com.doinglab.foodlens2.sdk.** {
        *;
@@ -62,14 +62,14 @@ If you use code obfuscation based on proguard, pelase set below setting on progu
 ```
 
 ## 3.Set address of independent FoodLens2 server
-   Pelase add below informaiotn on your Manifest.xml.
+   Please add below informaiotn on your Manifest.xml.
 ```xml
 //Pelase add only domain name or ip address instead of URL e.g) www.foodlens.com, 123.222.100.10
 <meta-data android:name="com.doinglab.foodlens.sdk.serveraddr" android:value="[server_address]"/> 
 ```  
 
 ## 4. How to use SDK
-FoodLens API is working based on image which contaions foods.
+FoodLens API is working based on image which contains foods.
 
 ### 4.1 Get prediction result
 1. Create FoodlensService
@@ -104,9 +104,9 @@ foodLensService.predict(byteData, object : RecognitionResultHandler { //If userI
 ```
 
 ### 4.2 FoodLens2 Options
-#### 4.2.1 Auto image rotation based on Exif orientation information
+#### 4.2.1 Auto image rotation based on EXIF orientation information
 ```
-//You can use image rotation based on Exit information, if you set true, food coordinate can be rotated based Exit information.
+//You can use image rotation based on EXIF information, if you set true, food coordinate can be rotated based EXIF information.
 //Default value is true
 foodLensService.setAutoRotate(true)
 ```
