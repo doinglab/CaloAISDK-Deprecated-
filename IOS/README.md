@@ -1,6 +1,6 @@
-# iOS FoodLens SDK Manual
+# iOS CaloAI(FoodLens2) SDK Manual
 ## [ReleaseNote](ReleaseNote.md)
-FoodLens functionality is available using the FoodLens SDK for iOS.
+FoodLens functionality is available using the CaloAI(FoodLens2) SDK for iOS.
 
 ## Requirements
 
