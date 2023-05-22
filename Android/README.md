@@ -34,7 +34,7 @@ android {
 ```
 
 ## 2. Resources and Manifests setting
-If you want to use FoodLens2SDK, you need to set CompanyToken, AppToken in Manifests.
+If you want to use CaloAI, you need to set CompanyToken, AppToken in Manifests.
 
 ### 2.1 AppToken, CompanyToken setting
 Please add issued AppToken, CompanyToken on your /app/res/values/strings.xml.
