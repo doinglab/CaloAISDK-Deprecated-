@@ -34,7 +34,7 @@ android {
 ```
 
 ## 2. Resources and Manifests setting
-If you want to use FoodLens2SDK, you need to set CompanyToken, AppToken in Manifests.
+If you want to use CaloAI, you need to set CompanyToken, AppToken in Manifests.
 
 ### 2.1 AppToken, CompanyToken setting
 Please add issued AppToken, CompanyToken on your /app/res/values/strings.xml.
@@ -60,7 +60,7 @@ If you use code obfuscation based on proguard, please set below setting on progu
 }
 ```
 
-## 3.Set address of independent FoodLens2 server
+## 3.Set address of independent CaloAI server
    Please add below informaiotn on your Manifest.xml.
 ```xml
 //Pelase add only domain name or ip address instead of URL e.g) www.foodlens.com, 123.222.100.10
@@ -68,7 +68,7 @@ If you use code obfuscation based on proguard, please set below setting on progu
 ```  
 
 ## 4. How to use SDK
-FoodLens API is working based on image which contains foods.
+CaloAI API is working based on image which contains foods.
 
 ### 4.1 Get prediction result
 1. Create FoodlensService
@@ -102,7 +102,7 @@ foodLensService.predict(byteData, object : RecognitionResultHandler { //If userI
 })
 ```
 
-### 4.2 FoodLens2 Options
+### 4.2 CaloAI Options
 #### 4.2.1 Auto image rotation based on EXIF orientation information
 ```
 //You can use image rotation based on EXIF information, if you set true, food coordinate can be rotated based EXIF information.
@@ -127,4 +127,4 @@ foodLensService.setLanguage(LanguageConfig.EN)
 [JSON Sample](../JSON%20Sample)
 
 ## 8. License
-FoodLens is available under the MIT license. See the LICENSE file for more info.
+CaloAI is available under the MIT license. See the LICENSE file for more info.

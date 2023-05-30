@@ -46,8 +46,8 @@ Please add below lines on your info.plist
 - Privacy - Photo Library Usage Description
 
 
-## 3. Set address of independent FoodLens2 server
-If you want to use independent FoodLens2 server instead of FoodLens2 Server.
+## 3. Set address of independent CaloAI server
+If you want to use independent CaloAI server instead of FoodLens2 Server.
 Please add below informatiotn on your info.plist
  
 ```swift
@@ -67,14 +67,14 @@ FoodLens API works based on the images that contain foods.
 import FoodLens2
 ```
 
-#### 4.1.2 Create FoodLens2 service
+#### 4.1.2 Create FoodLens service
 ```swift
 // create an instance
 let foodlens = FoodLens()
 ```
 
 #### 4.1.3 Predict images
-There are several ways to use FoodLens2. We provide three ways of concurrency.
+There are several ways to use CaloAI. We provide three ways of concurrency.
 
 ### NOTE THAT, please use ORIGINAL IMAGE, if resolution of image is low, the recognition result can be impact.
 
@@ -135,7 +135,7 @@ Task {
 ```
 
 
-### 4.2 FoodLens2 Options
+### 4.2 CaloAI Options
 
 #### 4.2.1 Auto image rotation based on EXIF orientation information
 ```swift
