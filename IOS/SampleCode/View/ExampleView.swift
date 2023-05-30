@@ -151,7 +151,7 @@ private struct PredictResultElementView: View {
                         Text("(\(foodInfo.energy.decimalString) kcal)")
                             .font(.footnote)
                     }
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .frame(maxWidth: .infinity)
                     
                     Spacer()
                     
