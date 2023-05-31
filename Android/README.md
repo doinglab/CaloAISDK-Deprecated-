@@ -30,7 +30,7 @@ android {
 #### 1.2.2 Gradle dependencies setting
 - Open app > Gradle Scripts(Gradle Script) > build.gradle (Module: app) and add foodlens sdk like below in dependencies{} section.
 ```java
-   implementation "com.doinglab.foodlens:FoodLens2:1.0.0"
+   implementation "com.doinglab.foodlens:FoodLens2:1.0.1"
 ```
 
 ## 2. Resources and Manifests setting
