@@ -61,7 +61,8 @@ If you use code obfuscation based on proguard, please set below setting on progu
 ```
 
 ## 3.Set address of independent CaloAI server
-   Please add below informaiotn on your Manifest.xml.
+ - If you want to use independent CaloAI server instead of FoodLens2 Server (separate consultation)
+ - Please add below informaiotn on your Manifest.xml. 
 ```xml
 //Pelase add only domain name or ip address instead of URL e.g) www.foodlens.com, 123.222.100.10
 <meta-data android:name="com.doinglab.foodlens.sdk.serveraddr" android:value="[server_address]"/> 
