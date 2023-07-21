@@ -12,7 +12,7 @@
         "ymax":Int,
         "ymin":Int
       },
-      "baseNutrition": //기본 섭취 영양소 정보 
+      "baseNutrition": //인식된 음식의 1회 제공량 기준 영양정보
       {
         "betaCarotene": Double, //총 베타카로틴 (-1은 null 처리)
         "biotin": Double, //총 비오틴 (-1은 null 처리)
@@ -54,8 +54,7 @@
         "vitaminD": Double, //총 비타민 D (-1은 null 처리)
         "vitaminE": Double, //총 비타민 E (-1은 null 처리)
         "vitaminK": Double, //총 비타민 K (-1은 null 처리)
-        "zinc": Double, //총 아연 (-1은 null 처리)
-      },
+     보
       "betaCarotene": Double, //총 베타카로틴 (-1은 null 처리)
       "biotin": Double, //총 비오틴 (-1은 null 처리)
       "calcium": Double, //총 칼슘 (-1은 null 처리)
