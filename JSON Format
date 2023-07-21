@@ -53,7 +53,8 @@
         "vitaminC": Double, //총 비타민 C, 원본(totalAscorbicAcid) (-1은 null 처리)
         "vitaminD": Double, //총 비타민 D (-1은 null 처리)
         "vitaminE": Double, //총 비타민 E (-1은 null 처리)
-        "vitaminK": Double, //총 비타민 K (-1은 null 처리)
+        "vitaminK": Double, //총 비타민 K (-1은 null 처리)\
+      },
       //하위 필드는 인식된 음식의 실측량 기준 영양정보
       "betaCarotene": Double, //총 베타카로틴 (-1은 null 처리)
       "biotin": Double, //총 비오틴 (-1은 null 처리)
