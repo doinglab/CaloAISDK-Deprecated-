@@ -148,7 +148,7 @@ private struct PredictResultElementView: View {
                         Text("\(foodInfo.name)")
                             .font(.headline)
                         
-                        Text("(\(foodInfo.energy.decimalString) kcal)")
+                        Text("(\(foodInfo.estimatedNutrition.first?.energy.decimalString ?? "0") kcal)")
                             .font(.footnote)
                     }
                     .frame(maxWidth: .infinity)
@@ -156,13 +156,13 @@ private struct PredictResultElementView: View {
                     Spacer()
                     
                     VStack(alignment: .leading, spacing: 4.0) {
-                        Text("Carbohydrate".localized() + ": \(foodInfo.carbohydrate.decimalString)g")
+                        Text("Carbohydrate".localized() + ": \(foodInfo.estimatedNutrition.first?.carbohydrate.decimalString ?? "0")g")
                             .font(.footnote)
                         
-                        Text("Protein".localized() + ": \(foodInfo.protein.decimalString)g")
+                        Text("Protein".localized() + ": \(foodInfo.estimatedNutrition.first?.protein.decimalString ?? "0")g")
                             .font(.footnote)
                         
-                        Text("Fat".localized() + ": \(foodInfo.fat.decimalString)g")
+                        Text("Fat".localized() + ": \(foodInfo.estimatedNutrition.first?.fat.decimalString ?? "0")g")
                             .font(.footnote)
                     }
                     .frame(maxWidth: 110)
