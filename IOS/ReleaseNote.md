@@ -1,7 +1,5 @@
 # iOS FoodLens2SDK (CaloAI) Release Note
-## v1.0.5(2024.02.06)
-- Modify response type
- 
+
 ## v1.0.3 (2023.09.13)
 - Added unit property to base nutrition field
 
